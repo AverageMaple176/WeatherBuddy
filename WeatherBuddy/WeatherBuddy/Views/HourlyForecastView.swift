@@ -14,6 +14,7 @@ struct HourlyForecastView: View {
     let timeZone: TimeZone
     @State private var showSheet: Bool = false
     
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 15) {

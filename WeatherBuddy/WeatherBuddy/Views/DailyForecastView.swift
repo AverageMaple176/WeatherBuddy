@@ -57,8 +57,8 @@ struct DailyForecastView: View {
                                     .fill(
                                         LinearGradient(
                                             colors: [
-                                                .green,
-                                                .orange
+                                                .blue.opacity(0.5),
+                                                .red.opacity(0.5)
                                             ],
                                             startPoint: .leading,
                                             endPoint: .trailing

@@ -29,7 +29,7 @@ struct SunView: View {
                 }
                 Spacer()
                 Text("\(nextSunrise.formatted(date: .omitted, time: .shortened))")
-                    .font(.system(size: 40, weight: .light, design: .rounded))
+                    .font(.system(size: 50, weight: .light, design: .rounded))
                 Spacer()
                 
             } else if Date.now > todaySunrise {

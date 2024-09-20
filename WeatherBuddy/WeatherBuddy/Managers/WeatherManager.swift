@@ -18,6 +18,7 @@ class WeatherManager {
     var measurementFormatter: MeasurementFormatter {
         let formatter = MeasurementFormatter()
         formatter.unitOptions = .temperatureWithoutUnit
+        formatter.numberFormatter.roundingMode = .up
         formatter.numberFormatter.maximumFractionDigits = 0
         return formatter
     }

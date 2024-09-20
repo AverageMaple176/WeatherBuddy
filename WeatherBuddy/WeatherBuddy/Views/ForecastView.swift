@@ -31,14 +31,14 @@ struct ForecastView: View {
     
     
     var highTemperature: String? {
-        if let high = hourlyForecast?.map({$0.temperature}).max() {
+        if let high = dailyForecast?.forecast.map({$0.highTemperature}).first {
             return weatherManager.measurementFormatter.string(from: high)
         } else {
             return nil
         }
     }
     var lowTemperature: String? {
-        if let low = hourlyForecast?.map({$0.temperature}).min() {
+        if let low = dailyForecast?.forecast.map({$0.lowTemperature}).first {
             return weatherManager.measurementFormatter.string(from: low)
         } else {
             return nil
