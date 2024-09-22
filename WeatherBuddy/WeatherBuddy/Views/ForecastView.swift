@@ -28,6 +28,7 @@ struct ForecastView: View {
     @State private var isLoading: Bool = false
     @State private var selectedCity: City?
     @State private var timeZone: TimeZone = .current
+    @StateObject private var aqiViewModel = AQIViewModel()
     
     
     var highTemperature: String? {
@@ -96,12 +97,12 @@ struct ForecastView: View {
             return nil
         }
     }
-    var sunrise: String? {
-        let riseTime = dailyForecast?.first?.sun.sunrise?.formatted(date: .omitted, time: .shortened)
+    var sunrise: Date? {
+        let riseTime = dailyForecast?.first?.sun.sunrise
         return riseTime
     }
-    var sunset: String? {
-        let setTime = dailyForecast?.first?.sun.sunset?.formatted(date: .omitted, time: .shortened)
+    var sunset: Date? {
+        let setTime = dailyForecast?.first?.sun.sunset
         return setTime
     }
     var todaySunrise: Date? {
@@ -117,10 +118,10 @@ struct ForecastView: View {
         return date
     }
     var nextSunrise: Date? {
-        let date = dailyForecast?[1].sun.sunrise
+        let date = dailyForecast?[0].sun.sunrise
         return date
     }
-
+    
     var alertSummary: String? {
         weatherAlert?.summary
     }
@@ -155,6 +156,9 @@ struct ForecastView: View {
                                     }
                                 }
                             }
+                            if aqiViewModel.aqi == 4 || aqiViewModel.aqi == 5 {
+                                AQIView(aqi: aqiViewModel.aqi, description: aqiViewModel.description, pm2_5: aqiViewModel.pm25, pm10: aqiViewModel.pm10, o3: aqiViewModel.o3, no2: aqiViewModel.no2, so2: aqiViewModel.so2, co: aqiViewModel.co)
+                            }
                             if let uvIndex {
                                 if let uvValue {
                                     if let uvSeverity {
@@ -171,17 +175,13 @@ struct ForecastView: View {
                                 DailyForecastView(dailyForecast: dailyForecast, timeZone: timeZone)
                             }
                             Divider()
+                            if aqiViewModel.aqi < 5 {
+                                AQIView(aqi: aqiViewModel.aqi, description: aqiViewModel.description, pm2_5: aqiViewModel.pm25, pm10: aqiViewModel.pm10, o3: aqiViewModel.o3, no2: aqiViewModel.no2, so2: aqiViewModel.so2, co: aqiViewModel.co)
+                            }
                             if let sunrise {
                                 if let sunset {
-                                    if let todaySunset {
-                                        if let todaySunrise {
-                                            if let nextSunset {
-                                                if let nextSunrise {
-                                                    SunView(sunrise: sunrise, sunset: sunset, todaySunrise: todaySunrise, todaySunset: todaySunset, nextSunrise: nextSunrise, nextSunset: nextSunset)
-                                                }
-                                            }
-                                        }
-                                    }
+                                    SunView(sunrise: sunrise, sunset: sunset)
+                                    
                                 }
                             }
                             if let humidity {
@@ -238,6 +238,7 @@ struct ForecastView: View {
         .task(id: selectedCity) {
             if let selectedCity {
                 await fetchWeather(for: selectedCity)
+                aqiViewModel.fetchAQI(latitude: selectedCity.coordinate.latitude, longitude: selectedCity.coordinate.longitude)
             }
         }
         .safeAreaInset(edge: .bottom) {
@@ -267,7 +268,6 @@ struct ForecastView: View {
             }
         }
     }
-        
     
     func fetchWeather(for city: City) async {
         isLoading = true
@@ -287,6 +287,7 @@ struct ForecastView: View {
         }
         isLoading = false
     }
+    
 }
 
 

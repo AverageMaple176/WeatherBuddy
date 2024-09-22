@@ -10,9 +10,11 @@ import WeatherKit
 import CoreLocation
 import SwiftUI
 
+
 class WeatherManager {
     static let shared = WeatherManager()
     let service = WeatherService.shared
+    let locationManager = CLLocationManager()
     
     
     var measurementFormatter: MeasurementFormatter {

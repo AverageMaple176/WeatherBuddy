@@ -28,8 +28,12 @@ struct WindView: View {
                     .multilineTextAlignment(.center)
             }
             Spacer()
-            Text("Gusts up to \n \(gust)")
-                .multilineTextAlignment(.center)
+            VStack {
+                Image(systemName: "wind")
+                    .font(.system(size: 30))
+                Text("Gusts up to \n \(gust)")
+                    .multilineTextAlignment(.center)
+            }
         }
         .padding()
         .background(

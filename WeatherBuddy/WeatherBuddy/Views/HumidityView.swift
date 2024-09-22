@@ -21,9 +21,13 @@ struct HumidityView: View {
             Text(humidity)
                 .font(.system(size: 50, weight: .light, design: .rounded))
             Spacer()
-            Text("Dew Point: \(dewPoint)")
-                .font(.title3)
-                .multilineTextAlignment(.center)
+            VStack {
+                Image(systemName: "humidity")
+                    .font(.system(size: 30))
+                Text("Dew Point: \(dewPoint)")
+                    .font(.title3)
+                    .multilineTextAlignment(.center)
+            }
         }
         .padding()
         .background(

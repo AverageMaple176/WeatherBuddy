@@ -21,18 +21,22 @@ struct FeelsLikeView: View {
             Text(temp)
                 .font(.system(size: 50, weight: .light, design: .rounded))
             Spacer()
-            if currentWeather.apparentTemperature.value > (currentWeather.temperature.value + 1) {
-                Text("Warmer than actual")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
-            } else if currentWeather.apparentTemperature.value < (currentWeather.temperature.value - 1) {
-                Text("Cooler than actual")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
-            } else {
-                Text("About the same as actual")
-                    .font(.title3)
-                    .multilineTextAlignment(.center)
+            VStack {
+                Image(systemName: "thermometer.medium")
+                    .font(.system(size: 30))
+                if currentWeather.apparentTemperature.value > (currentWeather.temperature.value + 1) {
+                    Text("Warmer than actual")
+                        .font(.title3)
+                        .multilineTextAlignment(.center)
+                } else if currentWeather.apparentTemperature.value < (currentWeather.temperature.value - 1) {
+                    Text("Cooler than \nactual")
+                        .font(.title3)
+                        .multilineTextAlignment(.center)
+                } else {
+                    Text("About the same as actual")
+                        .font(.title3)
+                        .multilineTextAlignment(.center)
+                }
             }
         }
         .padding()

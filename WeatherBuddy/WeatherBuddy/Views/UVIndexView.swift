@@ -19,11 +19,15 @@ struct UVIndexView: View {
             Text("UV Index")
                 .font(.title2)
             Spacer()
-            Text("\(value)")
-                .font(.system(size: 50, weight: .light, design: .rounded))
+            VStack {
+                Text("\(value)")
+                    .font(.system(size: 50, weight: .light, design: .rounded))
+                Text("\(severity.description)")
+                    .font(.title3)
+            }
             Spacer()
-            Text("\(severity.description)")
-                .font(.title3)
+            Image(systemName: "sun.max")
+                .font(.system(size: 30))
         }
         .padding()
         .background(

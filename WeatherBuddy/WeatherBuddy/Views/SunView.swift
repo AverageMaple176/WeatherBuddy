@@ -10,40 +10,33 @@ import WeatherKit
 
 struct SunView: View {
     let weatherManager = WeatherManager.shared
-    let sunrise: String
-    let sunset: String
-    let todaySunrise: Date
-    let todaySunset: Date
-    let nextSunrise: Date
-    let nextSunset: Date
+    let sunrise: Date
+    let sunset: Date
     
     
     var body: some View {
         HStack {
-            if Date.now > todaySunset {
-                VStack {
-                    Text("Sunrise")
-                        .font(.title3)
-                    Image(systemName: "sunrise")
-                        .font(.system(size: 30))
-                }
+            if Date.now < sunrise {
+                Text("Sunrise")
+                    .font(.title3)
+                
                 Spacer()
-                Text("\(nextSunrise.formatted(date: .omitted, time: .shortened))")
+                Text("\(sunrise.formatted(date: .omitted, time: .shortened))")
                     .font(.system(size: 50, weight: .light, design: .rounded))
                 Spacer()
+                Image(systemName: "sunrise")
+                    .font(.system(size: 30))
                 
-            } else if Date.now > todaySunrise {
-                VStack {
-                    Text("Sunset")
-                        .font(.title3)
-                    Image(systemName: "sunset")
-                        .font(.system(size: 30))
-                }
+            } else if Date.now > sunrise {
+                Text("Sunset")
+                    .font(.title3)
+                
                 Spacer()
-                Text("\(nextSunset.formatted(date: .omitted, time: .shortened))")
+                Text("\(sunset.formatted(date: .omitted, time: .shortened))")
                     .font(.system(size: 40, weight: .light, design: .rounded))
                 Spacer()
-                
+                Image(systemName: "sunset")
+                    .font(.system(size: 30))
             }
             
         }
