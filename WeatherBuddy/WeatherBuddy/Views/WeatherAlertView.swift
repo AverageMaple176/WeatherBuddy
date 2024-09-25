@@ -24,6 +24,7 @@ struct WeatherAlertView: View {
             VStack {
                 Text(summary)
                     .font(.system(size: 30))
+                    .multilineTextAlignment(.center)
                 Text(source)
                 
             }
@@ -31,7 +32,7 @@ struct WeatherAlertView: View {
         }
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 20).fill(Color.white.opacity(0.2))
+            RoundedRectangle(cornerRadius: 20).fill(Color.black.opacity(0.3))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         )
         .onTapGesture {

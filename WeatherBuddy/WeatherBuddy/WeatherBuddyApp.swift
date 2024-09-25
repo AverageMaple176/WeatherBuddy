@@ -11,6 +11,8 @@ import SwiftUI
 struct WeatherBuddyApp: App {
     @State private var locationManager = LocationManager()
     @State private var store = DataStore()
+    @State private var weatherManager = WeatherManager()
+    
     
     var body: some Scene {
         WindowGroup {

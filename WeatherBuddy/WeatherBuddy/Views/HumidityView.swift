@@ -31,7 +31,7 @@ struct HumidityView: View {
         }
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 20).fill(Color.white.opacity(0.2))
+            RoundedRectangle(cornerRadius: 20).fill(Color.black.opacity(0.3))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         )
     }

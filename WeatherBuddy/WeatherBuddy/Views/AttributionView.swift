@@ -29,6 +29,11 @@ struct AttributionView: View {
                 Text(.init("Powered by [\(attribution.serviceName)](\(attribution.legalPageURL))"))
             }
         }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 20).fill(Color.black.opacity(0.3))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        )
         .task {
             Task.detached { @MainActor in
                 attribution = await weatherManager.weatherAttribution()

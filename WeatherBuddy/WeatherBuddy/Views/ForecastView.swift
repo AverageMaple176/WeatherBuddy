@@ -14,6 +14,7 @@ struct ForecastView: View {
     @Environment(LocationManager.self) var locationManager
     @Environment(\.scenePhase) var scenePhase
     let weatherManager = WeatherManager.shared
+    
     @State private var weatherAlert: WeatherAlert?
     @State private var currentWeather: CurrentWeather?
     @State private var hourlyForecast: Forecast<HourWeather>?
@@ -134,9 +135,17 @@ struct ForecastView: View {
     
     var body: some View {
         ZStack {
-            WeatherGradientManager.gradient(for: currentWeather?.condition.description ?? "")
+            LinearGradient(colors: [.blue.opacity(0.5), .purple.opacity(0.5)], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
-            
+            if let sunset {
+                if (currentWeather?.condition.description == "Mostly Clear" || currentWeather?.condition.description == "Clear") && Date.now > sunset {
+                    Image(.night)
+                        .frame(width: 40, height: 40)
+                } else {
+                    BackgroundManager.image(for: currentWeather?.condition.description ?? "Clear")
+                        .frame(width: 40, height: 40)
+                }
+            }
             ScrollView(showsIndicators: false) {
                 VStack {
                     if let selectedCity {
@@ -287,7 +296,6 @@ struct ForecastView: View {
         }
         isLoading = false
     }
-    
 }
 
 

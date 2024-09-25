@@ -25,7 +25,7 @@ struct FeelsLikeView: View {
                 Image(systemName: "thermometer.medium")
                     .font(.system(size: 30))
                 if currentWeather.apparentTemperature.value > (currentWeather.temperature.value + 1) {
-                    Text("Warmer than actual")
+                    Text("Warmer than \nactual")
                         .font(.title3)
                         .multilineTextAlignment(.center)
                 } else if currentWeather.apparentTemperature.value < (currentWeather.temperature.value - 1) {
@@ -33,13 +33,13 @@ struct FeelsLikeView: View {
                         .font(.title3)
                         .multilineTextAlignment(.center)
                 } else {
-                    Text("About the same as actual")
+                    Text("About the same \nas actual")
                         .font(.title3)
                         .multilineTextAlignment(.center)
                 }
             }
         }
         .padding()
-        .background(RoundedRectangle(cornerRadius: 20).fill(Color.white.opacity(0.2)))
+        .background(RoundedRectangle(cornerRadius: 20).fill(Color.black.opacity(0.3)))
     }
 }

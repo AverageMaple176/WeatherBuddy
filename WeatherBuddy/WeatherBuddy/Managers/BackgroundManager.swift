@@ -8,73 +8,39 @@
 import SwiftUI
 import WeatherKit
 
-struct WeatherGradientManager {
+struct BackgroundManager {
 
-    static func gradient(for weatherCondition: String) -> LinearGradient {
+    static func image(for weatherCondition: String) -> Image {
         switch weatherCondition {
         
         case "Clear", "Windy", "Mostly Clear":
-            return LinearGradient(
-                gradient: Gradient(colors: [Color.purple, Color.orange]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            return Image(.clear)
+            
+        case "Partly Cloudy", "Mostly Cloudy":
+            return Image(.partlyCloudy)
         
-        case "Cloudy", "Partly Cloudy", "Mostly Cloudy":
-            return LinearGradient(
-                gradient: Gradient(colors: [Color.gray, Color.purple]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
+        case "Cloudy":
+            return Image(.cloudy)
         
         case "Rain", "Drizzle", "Heavy Rain":
-            return LinearGradient(
-                gradient: Gradient(colors: [Color.blue.opacity(0.5), Color.gray]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            return Image(.rain)
         
         case "Thunderstorm", "Isolate Thunderstorm", "Scattered Thunderstorms":
-            return LinearGradient(
-                gradient: Gradient(colors: [Color.purple, Color.black]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            return Image(.thunderstorm)
         
         case "Snow":
-            return LinearGradient(
-                gradient: Gradient(colors: [Color.white, Color.gray]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            return Image(.snow)
         
         case "Foggy":
-            return LinearGradient(
-                gradient: Gradient(colors: [Color.gray, Color.white.opacity(0.2)]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            return Image(.cloudy)
         
         case "Haze", "Smoky":
-            return LinearGradient(
-                gradient: Gradient(colors: [Color.orange, Color.gray]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        
+            return Image(.smoky)
         case "Tropical Storm", "Hurricane":
-            return LinearGradient(
-                gradient: Gradient(colors: [Color.red, Color.blue]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            return Image(.cloudy)
         
         default:
-            return LinearGradient(
-                gradient: Gradient(colors: [Color.purple, Color.orange]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            return Image(.clear)
         }
     }
 }

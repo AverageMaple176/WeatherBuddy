@@ -82,6 +82,6 @@ struct DailyForecastView: View {
             }
         }
         .padding()
-        .background(RoundedRectangle(cornerRadius: 20).fill(.white.opacity(0.2)))
+        .background(RoundedRectangle(cornerRadius: 20).fill(.black.opacity(0.3)))
     }
 }

@@ -14,6 +14,8 @@ struct CitiesListView: View {
     @Binding var selectedCity: City?
     @State private var isSearching = false
     @FocusState private var isFocused: Bool
+    @State private var sheetShown: Bool = false
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -27,7 +29,7 @@ struct CitiesListView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .fill(.blue)
                             )
-                            
+                        
                     }
                     .padding()
                     .onTapGesture {

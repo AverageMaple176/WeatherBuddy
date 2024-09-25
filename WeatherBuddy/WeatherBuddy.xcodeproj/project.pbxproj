@@ -31,8 +31,6 @@
 
 /* Begin PBXFileReference section */
 		60A652B52C94B27F00F9BE9A /* WeatherBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		60C06C882C97700A00752D3C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		60C06C8A2C97700B00752D3C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -71,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				60A652B72C94B27F00F9BE9A /* WeatherBuddy */,
-				60C06C872C97700A00752D3C /* Frameworks */,
 				60A652B62C94B27F00F9BE9A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,15 +79,6 @@
 				60A652B52C94B27F00F9BE9A /* WeatherBuddy.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		60C06C872C97700A00752D3C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				60C06C882C97700A00752D3C /* WidgetKit.framework */,
-				60C06C8A2C97700B00752D3C /* SwiftUI.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +132,8 @@
 			);
 			mainGroup = 60A652AC2C94B27F00F9BE9A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 60A652B62C94B27F00F9BE9A /* Products */;
 			projectDirPath = "";
@@ -307,7 +297,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeatherBuddy/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location to provide weather data.";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location to provide weather data and alert notifications.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location Access to provide accurate weather information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -341,7 +332,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeatherBuddy/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location to provide weather data.";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location to provide weather data and alert notifications.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location Access to provide accurate weather information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
