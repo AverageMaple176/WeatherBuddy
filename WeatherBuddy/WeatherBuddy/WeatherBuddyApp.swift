@@ -13,7 +13,6 @@ struct WeatherBuddyApp: App {
     @State private var store = DataStore()
     @State private var weatherManager = WeatherManager()
     
-    
     var body: some Scene {
         WindowGroup {
             if locationManager.isAuthorized {

@@ -13,7 +13,6 @@ struct CityRowView: View {
     @Environment(LocationManager.self) var locationManager
     @State private var currentWeather: CurrentWeather?
     @State private var isLoading: Bool = false
-    @State private var timeZone: TimeZone = .current
     let city: City
     
     var body: some View {
@@ -53,7 +52,6 @@ struct CityRowView: View {
         isLoading = true
         Task.detached { @MainActor in
             currentWeather = try await weatherManager.currentWeather(for: city.clLocation)
-            timeZone = await locationManager.getTimezone(for: city.clLocation)
             
         }
         isLoading = false

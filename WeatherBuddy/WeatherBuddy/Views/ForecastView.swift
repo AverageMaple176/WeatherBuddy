@@ -156,7 +156,7 @@ struct ForecastView: View {
                             Text(selectedCity.name)
                                 .font(.title)
                             if let currentWeather {
-                                CurrentWeatherView(currentWeather: currentWeather, highTemperature: highTemperature, lowTemperature: lowTemperature, timeZone: timeZone)
+                                CurrentWeatherView(currentWeather: currentWeather, highTemperature: highTemperature, lowTemperature: lowTemperature)
                             }
                             if let alertSummary {
                                 if let alertSource {

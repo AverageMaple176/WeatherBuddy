@@ -13,7 +13,6 @@ struct CurrentWeatherView: View {
     let currentWeather: CurrentWeather
     let highTemperature: String?
     let lowTemperature: String?
-    let timeZone: TimeZone
     
     var body: some View {
         Image(systemName: currentWeather.symbolName)

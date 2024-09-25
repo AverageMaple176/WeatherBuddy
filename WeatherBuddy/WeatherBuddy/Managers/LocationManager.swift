@@ -57,7 +57,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         switch manager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
             isAuthorized = true
-            manager.requestLocation()
+            manager.startUpdatingLocation()
         case .notDetermined:
             isAuthorized = false
             manager.requestWhenInUseAuthorization()
